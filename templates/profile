@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+
+    <div class="profile-container">
+    <div class="profile-nav">
+        <ul>
+            <a href="/profile"><li>Profile Info</li></a>
+            <a href="#"><li>My order</li></a>
+            <a href="#"><li>Wish List</li></a>
+            <a href="#"><li>Support Ticket</li></a>
+            <a href="#"><li>Coupons</li></a>
+            <a href="#"><li>Track Order</li></a>
+
+        </ul>
+
+    </div>
+    <div class="profiler">
+    <h2 class="mt-5">Profile</h2>
+    <img src="{{ url_for('static', filename='profile_pics/' + user.image_file) }}" alt="Profile Picture" width="150">
+    <form method="post" enctype="multipart/form-data" action="{{ url_for('profile') }}">
+        <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" class="form-control" id="fname" name="fname" value="{{ user.fname }}" required>
+        </div>
+        <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input type="text" class="form-control" id="lname" name="lname" value="{{ user.lname }}" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" value="{{ user.email }}" required>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="text" class="form-control" id="phone" name="phone" value="{{ user.phone }}" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password">
+        </div>
+        <div class="form-group">
+            <label for="image">Profile Picture</label>
+            <input type="file" class="form-control-file" id="image" name="image">
+        </div>
+        <button type="submit" class="btn btn-primary">Update Profile</button>
+    </form>
+</div>
+
+</div>
+
+{% endblock %}
