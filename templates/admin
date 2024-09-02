@@ -1,0 +1,56 @@
+{% extends "base_admin.html" %}
+{% block title %}Admin{% endblock %}
+{% block content %}
+
+<section class="section-div">
+
+
+    <div class="content">
+        <h3>Welcome to the admin dashboard.</h3>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <a href="{{ url_for('add_product') }}" class="btn btn-primary mt-4">Add Product</a>
+                <h3>Orders</h3>
+                {% if orders %}
+                <ul class="list-group">
+                    {% for order in orders %}
+                    <li class="list-group-item">
+                        <h5>Order ID: {{ order.id }}</h5>
+                        <p>Customer: {{ order.user.fname }} {{ order.user.lname }}</p>
+                        <p>Email: {{ order.user.email }}</p>
+                        <p>Product: {{ order.product.name }}</p>
+                        <p>Quantity: {{ order.quantity }}</p>
+                        <p>Total: ${{ order.total_price }}</p>
+                        <p>Status: {{ "sold" if order.purchased == 1 else "sold" }}</p>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p class="mt-4">No orders found.</p>
+                {% endif %}
+                <a href="{{ url_for('home') }}" class="btn btn-primary mt-4">Back to Shop</a>
+            </div>
+            <div class="col-md-6">
+                <div class="card mt-4">
+                    <div class="card-header">
+                        Product List
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            {% for product in products %}
+                            <li>{{ product.name }} - {{ product.price }} USD</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+
+
+
+    </div>
+
+
+</section>
+{% endblock %}
