@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Cart{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-10">
+        <h2 class="mt-5">Cart</h2>
+        {% if cart_items %}
+        <ul class="list-group">
+            {% for order in cart_items %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                    <h5>{{ order.product.name }}</h5>
+                    <p>Quantity: {{ order.quantity }}</p>
+                    <p>Total: ${{ order.total_price }}</p>
+                </div>
+                <form action="{{ url_for('remove_from_cart', cart_item_id=order.id) }}" method="POST">
+                    <button type="submit" class="btn btn-danger">Remove</button>
+                </form>
+            </li>
+            {% endfor %}
+        </ul>
+        <a href="{{ url_for('checkout') }}" class="btn btn-success mt-4">Proceed to Checkout</a>
+        {% else %}
+        <p class="mt-4">Your cart is empty.</p>
+        <ul class="list-group">
+
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                    <h5>No Products</h5>
+                    <p>Quantity: 0</p>
+                    <p>Total: $0</p>
+                </div>
+
+            </li>
+  
+        </ul>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
