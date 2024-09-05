@@ -35,7 +35,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\USEr\Desktop\slim_mart_new file\slim_mart_new\.venv"
+VIRTUAL_ENV="C:\Users\USEr\alx docs\SLIM MART\SLIM-MART\.venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

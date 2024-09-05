@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\USEr\Desktop\slim_mart_new file\slim_mart_new\.venv
+set VIRTUAL_ENV=C:\Users\USEr\alx docs\SLIM MART\SLIM-MART\.venv
 
 if not defined PROMPT set PROMPT=$P$G
 
